@@ -30,7 +30,7 @@ shop {
     ],
     items: [
       {
-        name: apple-pie,
+        name: apple pie,
         image: path/to/image,
         description: some description of the product,
         rating: 2,
