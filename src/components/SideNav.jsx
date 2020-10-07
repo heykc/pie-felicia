@@ -15,10 +15,10 @@ const SideNav = () => {
       <div>apps</div>
       <div>search</div>
 
-      <div>pies</div>
-      <div>coffees</div>
-      <div>extras</div>
-      <div>supplies</div>
+      <Link to='/pies'>pies</Link>
+      <Link to='/coffees'>coffees</Link>
+      <Link to='/extras'>extras</Link>
+      <Link to='/supplies'>supplies</Link>
     </div>
   )
 }

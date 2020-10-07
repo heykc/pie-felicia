@@ -11,7 +11,7 @@ const SelectPage = ({data}) => {
   console.log(data)
   return (
     <>
-      <div>Hello</div>
+      <div>{data.category}</div>
     </>
   )
 }
