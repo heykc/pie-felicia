@@ -7,7 +7,7 @@ const ProductPage = (props) => {
   console.log(props)
   return (
     <div className="product-page">
-      <TopNav />
+      <TopNav history={props.history}/>
       {props.data.name}
       <Rating rating={props.data.rating} />
       {props.data.description}

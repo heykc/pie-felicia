@@ -2,11 +2,12 @@ import React from 'react';
 
 
 
-const TopNav = () => {
+const TopNav = (props) => {
   return (
     <div className="top-nav">
       <div className="material-icons">apps</div>
-      <div className="material-icons-round">close</div>
+      <div className="material-icons-round"
+           onClick={() => props.history.goBack()}>close</div>
     </div>
   )
 }
