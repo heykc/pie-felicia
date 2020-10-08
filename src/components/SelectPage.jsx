@@ -11,7 +11,14 @@ const SelectPage = ({data}) => {
   console.log(data)
   return (
     <>
-      <div>{data.category}</div>
+      <div className="select-page">
+        Select {data.category}
+        {data.filters?.map(filter => <div key={filter}>{filter}</div>)}
+        
+        {data.items.map(item => {
+          return <div key={item}>{item.name}</div>
+        })}
+      </div>
     </>
   )
 }
