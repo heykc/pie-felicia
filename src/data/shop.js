@@ -17,7 +17,7 @@ const SHOP = {
         name: 'apple pie',
         image: '',
         description: 'some description of the product',
-        rating: 2,
+        rating: 5,
         sizes: [
           '6"',
           '8"',
@@ -43,7 +43,7 @@ const SHOP = {
         name: 'americano',
         image: '',
         description: 'some description of the product',
-        rating: 2,
+        rating: 3,
         sizes: [
           '1lb',
           '5lbs',
@@ -66,7 +66,7 @@ const SHOP = {
         name: 'whipped cream',
         image: '',
         description: 'some description of the product',
-        rating: 2,
+        rating: 4,
         sizes: [
           '12oz'
         ],
@@ -83,7 +83,7 @@ const SHOP = {
         name: 'plates',
         image: '',
         description: 'some description of the product',
-        rating: 3,
+        rating: 1,
         sizes: [
           'single'
         ],

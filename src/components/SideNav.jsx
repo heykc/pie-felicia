@@ -12,8 +12,8 @@ import {Link} from 'react-router-dom';
 const SideNav = () => {
   return (
     <div className="side-nav">
-      <div>apps</div>
-      <div>search</div>
+      <div className="material-icons">apps</div>
+      <div className="material-icons-round">search</div>
 
       <Link to='/pies'>pies</Link>
       <Link to='/coffees'>coffees</Link>
