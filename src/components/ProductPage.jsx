@@ -2,6 +2,7 @@ import React from 'react';
 
 import TopNav from './TopNav';
 import Rating from './Rating';
+import ItemCounter from './ItemCounter';
 
 const ProductPage = (props) => {
   return (
@@ -12,6 +13,7 @@ const ProductPage = (props) => {
               changeRating={props.changeRating}
               category={props.category}
               product={props.product} />
+      <ItemCounter />
       {props.data.description}
       {props.data.sizes.map((size, i) => (
         <div key={i}>

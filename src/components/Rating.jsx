@@ -14,8 +14,10 @@ const Rating = (props) => {
   const [rating, setRating] = useState(props.rating);
 
   const changeRating = (category, product, newRating) => {
+    // re-render component with new rating reflected
     setRating(newRating);
 
+    // set shopData with new product rating
     props.changeRating(category, product, newRating);
   }
 
