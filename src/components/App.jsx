@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Switch, Route} from 'react-router-dom';
 
 import CategoryPage from './CategoryPage';
@@ -12,6 +12,19 @@ import {shop} from '../data/shop';
  */
 
 const App = () => {
+  const [shopData, setShopData] = useState(shop);
+
+  const changeRating = (category, product, newRating) => {
+  
+    setShopData(prevShopData => {
+      prevShopData[category].items.forEach((item, i) => {
+        if (item.name === product)
+          prevShopData[category].items[i].rating = newRating;
+      })
+      return prevShopData;
+    })
+  }
+
   return (
     <>
       <Switch>
@@ -19,19 +32,23 @@ const App = () => {
                path='/:category'
                render={(routerProps) => {
                  const category = routerProps.match.params.category
-                 return <CategoryPage data={shop[category]} />
+                 return <CategoryPage data={shopData[category]} />
                }}
         />
         <Route path='/:category/:product'
                render={(routerProps) => {
                  const category = routerProps.match.params.category
                  const product = routerProps.match.params.product;
+                 const history = routerProps.history;
+                 const props = {category, product, history};
                  let data = {};
-                 shop[category].items.forEach(item => {
+                 shopData[category].items.forEach(item => {
                    if (item.name === product)
                     data = item;
                  })
-                 return <ProductPage data={data} {...routerProps}/>
+                 return <ProductPage data={data} 
+                                     {...props}
+                                     changeRating={changeRating}/>
                }}
         />
       </Switch>

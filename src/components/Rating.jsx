@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 
 /**
@@ -10,7 +10,19 @@ import React from 'react';
  */
 
 
-const Rating = ({rating}) => {
+const Rating = (props) => {
+  const [rating, setRating] = useState(props.rating);
+
+  const changeRating = (category, product, newRating) => {
+    setRating(newRating);
+
+    props.changeRating(category, product, newRating);
+  }
+
+  const category = props.category;
+  const product = props.product;
+  
+
   let ratings = [];
   
   for (let i = 1; i <= 5; i++) {
@@ -27,9 +39,18 @@ const Rating = ({rating}) => {
   }
 
   return (
-    <div key={rating+1} className="rating">
+    <div className="rating">
       {ratings.map((el, i) => {
-        return <div key={i} className={el.class}>{el.icon}</div>
+        return <div key={i} 
+                    className={el.class} 
+                    onClick={props.changeRating ? 
+                               () => changeRating(category, product, i+1)
+                               :
+                               null
+                            }
+               >
+                {el.icon}
+               </div>
       })}
     </div> 
   );

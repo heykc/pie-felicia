@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import SideNav from './SideNav';
 import Rating from './Rating';
@@ -11,7 +12,6 @@ import Rating from './Rating';
  */
 
 const CategoryPage = ({data}) => {
-  console.log(data)
   return (
     <>
       <SideNav />
@@ -21,17 +21,19 @@ const CategoryPage = ({data}) => {
         
         {data.items.map((item, i) => {
           return (
-            <div className="product-card" key={item.name}>
-              <div>{item.name}</div>
-              <Rating rating={item.rating} />
-              <div>{item.description}</div>
-              <div>
-                {item.sizes.length > 1 ?
-                  <span>{item.prices[0]} - {item.prices[item.prices.length - 1]}</span>
-                  :
-                  <span>{item.prices[0]}</span>}
+            <Link key={item.name} to={`/${data.category}/${item.name}`}>
+              <div className="product-card">
+                <div>{item.name}</div>
+                <Rating rating={item.rating} />
+                <div>{item.description}</div>
+                <div>
+                  {item.sizes.length > 1 ?
+                    <span>{item.prices[0]} - {item.prices[item.prices.length - 1]}</span>
+                    :
+                    <span>{item.prices[0]}</span>}
+                </div>
               </div>
-            </div>
+            </Link>
           )
         })}
 
