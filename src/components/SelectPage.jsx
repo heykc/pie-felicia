@@ -19,10 +19,17 @@ const SelectPage = ({data}) => {
         
         {data.items.map((item, i) => {
           return (
-            <Fragment key={item.name}>
+            <div className="product-card" key={item.name}>
               <div>{item.name}</div>
               <Rating rating={item.rating} />
-            </Fragment>
+              <div>{item.description}</div>
+              <div>
+                {item.sizes.length > 1 ?
+                  <span>{item.prices[0]} - {item.prices[item.prices.length - 1]}</span>
+                  :
+                  <span>{item.prices[0]}</span>}
+              </div>
+            </div>
           )
         })}
 
