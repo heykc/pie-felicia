@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 
-import SelectPage from './SelectPage';
+import CategoryPage from './CategoryPage';
 import ProductPage from './ProductPage';
 
 import {shop} from '../data/shop';
@@ -19,7 +19,7 @@ const App = () => {
                path='/:category'
                render={(routerProps) => {
                  const category = routerProps.match.params.category
-                 return <SelectPage data={shop[category]} />
+                 return <CategoryPage data={shop[category]} />
                }}
         />
         <Route path='/:category/:product'

@@ -10,7 +10,7 @@ import Rating from './Rating';
  * @param {object} data The category data passed from App 
  */
 
-const SelectPage = ({data}) => {
+const CategoryPage = ({data}) => {
   console.log(data)
   return (
     <>
@@ -41,4 +41,4 @@ const SelectPage = ({data}) => {
   )
 }
 
-export default SelectPage;
+export default CategoryPage;
