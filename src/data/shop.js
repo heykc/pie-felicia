@@ -36,11 +36,14 @@ const SHOP = {
   coffees: {
     category: 'coffees',
     filters: [
-      'americano'
+      'americano',
+      'capuccino',
+      'frapuccino',
+      'latte'
     ],
     items: [
       {
-        name: 'americano',
+        name: 'caffe americano',
         image: '',
         description: 'some description of the product',
         rating: 3,
