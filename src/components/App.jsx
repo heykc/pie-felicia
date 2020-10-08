@@ -16,15 +16,15 @@ const App = () => {
     <>
       <Switch>
         <Route exact
-               path={['/pies', '/coffees', '/extras', '/supplies']}
+               path='/:category'
                render={(routerProps) => {
-                 const category = routerProps.location.pathname.substring(1);
+                 const category = routerProps.match.params.category
                  return <SelectPage data={shop[category]} />
                }}
         />
-        <Route path={['/pies/:product', '/coffees/:product', '/extras/:product', '/supplies/:product']}
+        <Route path='/:category/:product'
                render={(routerProps) => {
-                 const category = routerProps.location.pathname.split('/')[1];
+                 const category = routerProps.match.params.category
                  const product = routerProps.match.params.product;
                  let data = {};
                  shop[category].items.forEach(item => {
