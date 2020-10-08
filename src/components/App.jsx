@@ -13,15 +13,25 @@ import {shop} from '../data/shop';
 
 const App = () => {
   const [shopData, setShopData] = useState(shop);
+  const [cart, setCart] = useState([]);
 
   const changeRating = (category, product, newRating) => {
-  
     setShopData(prevShopData => {
       prevShopData[category].items.forEach((item, i) => {
         if (item.name === product)
           prevShopData[category].items[i].rating = newRating;
       })
       return prevShopData;
+    })
+  }
+
+  const changeCart = (product, size, amount) => {
+    setCart(prevCart => {
+      prevCart.forEach(item => {
+        if (item.name === product)
+          item.order[size] = amount;
+      })
+      return prevCart;
     })
   }
 
@@ -32,7 +42,7 @@ const App = () => {
                path='/:category'
                render={(routerProps) => {
                  const category = routerProps.match.params.category
-                 return <CategoryPage data={shopData[category]} />
+                 return <CategoryPage data={shopData[category]} cart={cart}/>
                }}
         />
         <Route path='/:category/:product'
@@ -48,7 +58,9 @@ const App = () => {
                  })
                  return <ProductPage data={data} 
                                      {...props}
-                                     changeRating={changeRating}/>
+                                     changeRating={changeRating}
+                                     changeCart={changeCart} 
+                                     cart={cart}/>
                }}
         />
       </Switch>

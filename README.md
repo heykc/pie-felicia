@@ -58,29 +58,33 @@ cart data
 cart [
   apple-pie: {
     type: pies,
-    order: [
+    order: {
       6": 10,
       8": 5,
       10": 4,
       12": 2
-    ]
+    }
   },
   americano: {
     type: coffees,
-    order: [
+    order: {
       1lb: 3,
       5lbs: 2,
       7lbs: 7,
       10lbs: 9
-    ]
+    }
   },
   whipped-cream: {
     type: extras,
-    order: 10 (cans)
+    order: {
+      12oz: 10
+    }
   },
   table: {
     type: supplies,
-    order: 10
+    order: {
+      amount: 10
+    }
   }
 ]
 
