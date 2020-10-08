@@ -18,8 +18,8 @@ const App = () => {
       <Switch>
         <Route path={['/pies', '/coffees', '/extras', '/supplies']}
                render={(routerProps) => {
-                 const data = routerProps.location.pathname.substring(1);
-                 return <SelectPage data={shop[data]} />
+                 const category = routerProps.location.pathname.substring(1);
+                 return <SelectPage data={shop[category]} />
                }}
         />
       </Switch>

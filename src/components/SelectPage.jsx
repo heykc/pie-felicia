@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+
+import Rating from './Rating';
 
 /**
  * @summary     A selection page for choosing store products.
@@ -13,11 +15,18 @@ const SelectPage = ({data}) => {
     <>
       <div className="select-page">
         Select {data.category}
-        {data.filters?.map(filter => <div key={filter}>{filter}</div>)}
+        {data.filters?.map(filter => <div key={filter} id={filter}>{filter}</div>)}
         
-        {data.items.map(item => {
-          return <div key={item}>{item.name}</div>
+        {data.items.map((item, i) => {
+          return (
+            <Fragment key={item.name}>
+              <div>{item.name}</div>
+              <Rating rating={item.rating} />
+            </Fragment>
+          )
         })}
+
+        <div>cart</div>
       </div>
     </>
   )

@@ -83,7 +83,7 @@ const SHOP = {
         name: 'plates',
         image: '',
         description: 'some description of the product',
-        rating: 2,
+        rating: 3,
         sizes: [
           'single'
         ],
