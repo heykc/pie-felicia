@@ -1,5 +1,6 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 
+import SideNav from './SideNav';
 import Rating from './Rating';
 
 /**
@@ -13,6 +14,7 @@ const SelectPage = ({data}) => {
   console.log(data)
   return (
     <>
+      <SideNav />
       <div className="select-page">
         Select {data.category}
         {data.filters?.map(filter => <div key={filter} id={filter}>{filter}</div>)}
