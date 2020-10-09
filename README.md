@@ -56,8 +56,8 @@ shop {
 
 cart data
 cart [
-  apple-pie: {
-    type: pies,
+  {
+    product: apple-pie,
     order: {
       6": 10,
       8": 5,
@@ -65,8 +65,8 @@ cart [
       12": 2
     }
   },
-  americano: {
-    type: coffees,
+  {
+    product: americano,
     order: {
       1lb: 3,
       5lbs: 2,
@@ -74,14 +74,14 @@ cart [
       10lbs: 9
     }
   },
-  whipped-cream: {
-    type: extras,
+  {
+    product: whipped-cream,
     order: {
       12oz: 10
     }
   },
-  table: {
-    type: supplies,
+  {
+    product: table,
     order: {
       amount: 10
     }

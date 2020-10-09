@@ -9,10 +9,17 @@ import React, { useState } from 'react';
  * @return {HTML} Returns an array of filled/unfilled stars according to the rating passed in
  */
 
-
 const Rating = (props) => {
   const [rating, setRating] = useState(props.rating);
 
+  /**
+   * @summary Allows the changing of the product's rating
+   * 
+   * @param {string} category 
+   * @param {string} product 
+   * @param {number} newRating 
+   */
+  
   const changeRating = (category, product, newRating) => {
     // re-render component with new rating reflected
     setRating(newRating);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Switch, Route} from 'react-router-dom';
 
 import CategoryPage from './CategoryPage';
@@ -15,6 +15,11 @@ const App = () => {
   const [shopData, setShopData] = useState(shop);
   const [cart, setCart] = useState([]);
 
+  useEffect(() => {
+    console.log('cart',cart)
+    console.log(shopData)
+  })
+
   const changeRating = (category, product, newRating) => {
     setShopData(prevShopData => {
       prevShopData[category].items.forEach((item, i) => {
@@ -25,15 +30,36 @@ const App = () => {
     })
   }
 
-  const changeCart = (product, size, amount) => {
+  const changeCart = (orderObj, productName) => {
+    console.log('changing cart')
+    console.log(orderObj)
+    let cartObj = {
+      product: productName,
+      order: orderObj
+    }
     setCart(prevCart => {
-      prevCart.forEach(item => {
-        if (item.name === product)
-          item.order[size] = amount;
-      })
+      let prevOrder = prevCart.find(item => item.product === productName);
+      console.log(prevOrder)
+      if (!prevOrder) {
+        prevCart.push(cartObj);
+        console.log('empty cart',prevCart)
+      }
+      else {
+        prevCart.forEach((item, i) => {
+          console.log(item)
+          if (item.product === productName) {
+            prevCart[i] = cartObj;
+            console.log('found item', item.product)
+          }
+        })
+      }
+
+      console.log('before state change',prevCart)
       return prevCart;
     })
   }
+
+  
 
   return (
     <>
@@ -48,19 +74,18 @@ const App = () => {
         <Route path='/:category/:product'
                render={(routerProps) => {
                  const category = routerProps.match.params.category
-                 const product = routerProps.match.params.product;
+                 const productName = routerProps.match.params.product;
                  const history = routerProps.history;
-                 const props = {category, product, history};
-                 let data = {};
-                 shopData[category].items.forEach(item => {
-                   if (item.name === product)
-                    data = item;
-                 })
+                 const props = {category, productName, history};
+                 let data = shopData[category].items.find(item => item.name === productName);
+                 console.log('cart from app', cart)
+                 
                  return <ProductPage data={data} 
                                      {...props}
                                      changeRating={changeRating}
-                                     changeCart={changeCart} 
-                                     cart={cart}/>
+                                     changeCart={changeCart}
+                                     cart={cart}
+                        />
                }}
         />
       </Switch>
