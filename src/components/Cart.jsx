@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
  * @param {object} shopData 
  */
 const Cart = ({cart, history, category, shopData}) => {
+  let orderTotal = 0;
   return (
     <div className="cart">
       <div>CART</div>
@@ -17,6 +18,7 @@ const Cart = ({cart, history, category, shopData}) => {
       <div>Did you remember your <Link to='/supplies'>Supplies</Link> and <Link to='/extras'>Extras</Link>?</div>
       {/* look through the cart */}
       {cart.map((item, i) => {
+        let subTotal = 0;
         // pull cart data
         const {order, product: productName, type} = item;
         return (
@@ -28,6 +30,8 @@ const Cart = ({cart, history, category, shopData}) => {
               // allows access to prices
               let shopItem = shopData[type].items.find(x => x.name === productName);
               let total = shopItem.prices[i] * amount;
+              orderTotal += total;
+              subTotal += total;
               // only display if ordered at least 1 of the sizes
               if (amount > 0)
                 return (<div key={size}>
@@ -36,9 +40,12 @@ const Cart = ({cart, history, category, shopData}) => {
                           ${total}
                         </div>)
             })}
+            {subTotal}
           </Fragment>
         )
       })}
+      <div>{orderTotal}</div>
+      
     </div>
     
 
