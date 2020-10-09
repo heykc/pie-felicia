@@ -11,44 +11,70 @@ import { Link } from 'react-router-dom';
  */
 const Cart = ({cart, history, category, shopData}) => {
   let orderTotal = 0;
+
+  /**
+   * @summary Summarizes the cart for easy access
+   * 
+   * @param {array} cartArr The cart for the app
+   */
+
+  const cartComb = (cartArr) => {
+    let arr = [];
+
+    cartArr.forEach(cartItem => {
+      let subtotal = 0;
+      let itemCount = 0;
+      const {order, product: productName, type} = cartItem;
+      Object.keys(order).forEach((size, i) => {
+        let amount = order[size];
+        itemCount += amount;
+        let shopItem = shopData[type].items.find(x => x.name === productName);
+        let sizeTotal = shopItem.prices[i] * amount;
+        orderTotal += sizeTotal;
+        subtotal += sizeTotal;      
+      })
+      arr.push({
+        'name': productName,
+        'totalCost': subtotal,
+        'itemCount': itemCount,
+        'order': order
+      })
+    })
+
+    return arr;
+  }
+
+  let details = cartComb(cart);
   return (
     <div className="cart">
       <div>CART</div>
       <button onClick={() => history.goBack()}>Back to {category}</button>
       <div>Did you remember your <Link to='/supplies'>Supplies</Link> and <Link to='/extras'>Extras</Link>?</div>
-      {/* look through the cart */}
-      {cart.map((item, i) => {
-        let subTotal = 0;
-        // pull cart data
-        const {order, product: productName, type} = item;
+      {/* look through the details */}
+      {details.map((x, i) => {
         return (
           <Fragment key={i}>
-            <div>{productName}</div>
-            {/* look through the order */}
-            {Object.keys(order).map((size, i) => {
-              let amount = order[size];
-              // allows access to prices
-              let shopItem = shopData[type].items.find(x => x.name === productName);
-              let total = shopItem.prices[i] * amount;
-              orderTotal += total;
-              subTotal += total;
-              // only display if ordered at least 1 of the sizes
-              if (amount > 0)
-                return (<div key={size}>
-                          Size: {size}
-                          x{amount}
-                          ${total}
-                        </div>)
-            })}
-            {subTotal}
+            <div>{x.name} ........ {x.itemCount}</div>
+            <>
+              {/* for every possible order */}
+              {Object.keys(x.order).map((y, j) => {
+                // check if the amount is > 0
+                if (x.order[y] > 0)
+                  return (
+                    // display the size and amount
+                    <div key={j}>
+                      {y} ........ {x.order[y]}
+                    </div>
+                  )
+              })}
+            </>
+            <div>{x.totalCost}</div>
           </Fragment>
         )
       })}
-      <div>{orderTotal}</div>
-      
-    </div>
-    
 
+      <div>{orderTotal}</div>
+    </div>
   )
 }
 
