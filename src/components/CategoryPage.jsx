@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import SideNav from './SideNav';
@@ -11,7 +11,11 @@ import Rating from './Rating';
  * @param {object} data The category data passed from App 
  */
 
-const CategoryPage = ({data}) => {
+const CategoryPage = ({data, changeCategory}) => {
+  useEffect(() => {
+    changeCategory(data.category);
+  })
+
   return (
     <>
       <SideNav />
@@ -37,7 +41,9 @@ const CategoryPage = ({data}) => {
           )
         })}
 
-        <div>cart</div>
+        <Link to='/cart'>
+          <div>cart</div>
+        </Link>
       </div>
     </>
   )

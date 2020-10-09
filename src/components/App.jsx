@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {Switch, Route} from 'react-router-dom';
 
 import CategoryPage from './CategoryPage';
 import ProductPage from './ProductPage';
+import Cart from './Cart';
 
 import {shop} from '../data/shop';
 
@@ -10,10 +11,33 @@ import {shop} from '../data/shop';
  * @summary     The encompassing App component.
  * @description Uses Routes to point to different paths in the app.
  */
+const defaultCart = [
+  {
+    product: 'apple pie',
+    type: 'pies',
+    order: {
+      '6"': 10,
+      '8"': 0,
+      '10"': 0,
+      '12"': 2
+    }
+  },
+  {
+    product: 'caffe americano',
+    type: 'coffees',
+    order: {
+      '1lb': 0,
+      '5lbs': 0,
+      '7lbs': 0,
+      '10lbs': 9
+    }
+  }
+];
 
 const App = () => {
   const [shopData, setShopData] = useState(shop);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(defaultCart);
+  const [category, setCategory] = useState('');
 
   const changeRating = (category, product, newRating) => {
     setShopData(prevShopData => {
@@ -25,10 +49,11 @@ const App = () => {
     })
   }
 
-  const changeCart = (orderObj, productName) => {
+  const changeCart = (orderObj, productName, category) => {
     let cartObj = {
-      product: productName,
-      order: orderObj
+      'product': productName,
+      'type': category,
+      'order': orderObj
     }
     setCart(prevCart => {
       let prevOrder = prevCart.find(item => item.product === productName);
@@ -47,16 +72,21 @@ const App = () => {
     })
   }
 
-  
+  const changeCategory = (newCategory) => {
+    setCategory(newCategory);
+  }
 
   return (
     <>
       <Switch>
+        <Route path='/cart'
+               render={({history}) => <Cart cart={cart} history={history} category={category} shopData={shopData}/>}
+        />
         <Route exact
                path='/:category'
                render={(routerProps) => {
                  const category = routerProps.match.params.category
-                 return <CategoryPage data={shopData[category]} cart={cart}/>
+                 return <CategoryPage data={shopData[category]} changeCategory={changeCategory}/>
                }}
         />
         <Route path='/:category/:product'

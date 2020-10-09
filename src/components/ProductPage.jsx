@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import TopNav from './TopNav';
 import Rating from './Rating';
@@ -39,7 +39,7 @@ const ProductPage = (props) => {
     // must be a selected size an amount > 0
     if (size && order[size]) {
       // change the cart
-      props.changeCart(order, props.productName)
+      props.changeCart(order, props.productName, props.category)
       // clear the size selection
       setSize('');
     }
