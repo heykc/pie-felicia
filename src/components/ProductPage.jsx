@@ -25,8 +25,6 @@ const zeroFillOrder = (arr) => {
  */
 
 const ProductPage = (props) => {
-  console.log(props)
-
   // find the order in the cart that matches the product name
   let prevCartOrder = props.cart.find(item => item.product === props.productName);
   // previous order is the order key from the cart or a zero-filled object
