@@ -32,16 +32,17 @@ const ProductPage = (props) => {
   // previous order is the order key from the cart or a zero-filled object
   let prevOrder = prevCartOrder?.order || zeroFillOrder(props.data.sizes, props.productName);
 
+  // state for current order
   const [order, setOrder] = useState(prevOrder);
+  // state for size selection
   const [size, setSize] = useState('');
 
-  useEffect(() => {
-    console.log('prevOrder',prevOrder)
-  })
   const changeCart = () => {
-    console.log(order)
+    // must be a selected size an amount > 0
     if (size && order[size]) {
+      // change the cart
       props.changeCart(order, props.productName)
+      // clear the size selection
       setSize('');
     }
   }
@@ -50,17 +51,19 @@ const ProductPage = (props) => {
     <div className="product-page">
       <TopNav history={props.history}/>
       <button onClick={changeCart}>Add to Cart</button>
+      {/* product name */}
       {props.data.name}
       <Rating rating={props.data.rating} 
               changeRating={props.changeRating}
               category={props.category}
               product={props.productName} 
       />
+      {/* add/remove items */}
       <div className="item-counter">
         <span className="material-icons-round" 
               onClick={() => {
+                // must have a size to set the order amount
                 size &&
-                // this is not the same format as the cart. change this to match
                 setOrder({
                   ...order,
                   [size]: order[size] - 1
@@ -68,12 +71,13 @@ const ProductPage = (props) => {
               }}>
           remove_circle
         </span>
-        {/* not working because the order I get from the cart is different than the order I set in this component */}
+        {/* reflect the amount for the current order 
+            initial render has no size selected, so a 0 is displayed*/}
         <span>{order[size] || 0}</span>
         <span className="material-icons-round" 
               onClick={() => {
+                // must have a size to set the order amount
                 size &&
-                // this is not the same format as the cart. change this to match
                 setOrder({
                   ...order,
                   [size]: order[size] + 1
@@ -84,7 +88,9 @@ const ProductPage = (props) => {
       </div>
       {props.data.description}
       {props.data.sizes.map((size, i) => (
-        <div key={i} onClick={() => {console.log('setting size'); setSize(size)}}>
+        // display all available sizes
+        // clicking sets the size
+        <div key={i} onClick={() => setSize(size)}>
           {size}{props.data.prices[i]}
         </div>
       ))}
