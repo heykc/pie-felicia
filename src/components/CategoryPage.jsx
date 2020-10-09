@@ -12,6 +12,8 @@ import Rating from './Rating';
  */
 
 const CategoryPage = ({data, changeCategory}) => {
+  // set the current category when page loads
+  // used for the cart component to display 'back to `category`'
   useEffect(() => {
     changeCategory(data.category);
   })
@@ -21,16 +23,20 @@ const CategoryPage = ({data, changeCategory}) => {
       <SideNav />
       <div className="select-page">
         Select {data.category}
+        {/* display filters if category has them */}
         {data.filters?.map(filter => <div key={filter} id={filter}>{filter}</div>)}
-        
+        {/* look through all items in category */}
         {data.items.map((item, i) => {
           return (
+            // display a product card for each product
             <Link key={item.name} to={`/${data.category}/${item.name}`}>
               <div className="product-card">
                 <div>{item.name}</div>
                 <Rating rating={item.rating} />
                 <div>{item.description}</div>
                 <div>
+                  {/* display min and max prices OR
+                      display flat product price */}
                   {item.sizes.length > 1 ?
                     <span>{item.prices[0]} - {item.prices[item.prices.length - 1]}</span>
                     :
