@@ -11,6 +11,7 @@ import {shop} from '../data/shop';
  * @summary     The encompassing App component.
  * @description Uses Routes to point to different paths in the app.
  */
+
 const defaultCart = [
   {
     product: 'apple pie',
