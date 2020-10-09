@@ -2,10 +2,14 @@ Pie Felicia!
 
 Usability through React, Design through SCSS
 
-Pie-shop catering app idea focused on MVP features:
+This is a prototype version of a pie shop catering business app. It therefore has limited functionality. The MVP features are:
 1) category selection
   a) pies
+    .) apple
+    .) cherry
   b) coffees
+    .) caffe americano
+    .) long black
   c) extras
     .) whipped cream
     .) coffee cream
@@ -18,7 +22,26 @@ Pie-shop catering app idea focused on MVP features:
 2) product selection
 3) cart view
 
-database
+Highly reusable components
+1) optional props - props.propName?
+
+Routing
+
+Superior commenting (JSDoc style)
+
+Google Material Icons
+
+JSX over JS file extensions
+
+Hooks
+
+
+
+
+
+
+
+database template
 shop {
   pies: {
     filters: [
@@ -48,16 +71,24 @@ shop {
         ] 
       }
     ] 
-  }
+  },
+  coffees: {},
+  extras: {},
+  supplies: {}
 }
 
 
 
 
-cart data
+cart data template
+@product - name of item
+@type - helps to find in shop data for getting item prices
+@order - mimics all available sizes for easy price array mapping
+
 cart [
   {
     product: apple-pie,
+    type: 'pies',
     order: {
       6": 10,
       8": 5,
@@ -67,6 +98,7 @@ cart [
   },
   {
     product: americano,
+    type: 'coffees',
     order: {
       1lb: 3,
       5lbs: 2,
@@ -76,12 +108,14 @@ cart [
   },
   {
     product: whipped-cream,
+    type: 'extras',
     order: {
       12oz: 10
     }
   },
   {
     product: table,
+    type: 'supplies',
     order: {
       amount: 10
     }
