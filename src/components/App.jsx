@@ -35,9 +35,19 @@ const defaultCart = [
 ];
 
 const App = () => {
+  // states
   const [shopData, setShopData] = useState(shop);
   const [cart, setCart] = useState(defaultCart);
   const [category, setCategory] = useState('');
+
+  /**
+   * @summary Allows user to change product rating
+   * @description Finds the product in the shopData and changes the rating
+   *
+   * @param {string} category 
+   * @param {string} product 
+   * @param {number} newRating 
+   */
 
   const changeRating = (category, product, newRating) => {
     setShopData(prevShopData => {
@@ -48,6 +58,15 @@ const App = () => {
       return prevShopData;
     })
   }
+
+  /**
+   * @summary Allows user to change the cart
+   * @description Changes the order in the cart for the item and size selected
+   * 
+   * @param {object} orderObj 
+   * @param {string} productName 
+   * @param {string} category 
+   */
 
   const changeCart = (orderObj, productName, category) => {
     let cartObj = {
@@ -72,6 +91,12 @@ const App = () => {
     })
   }
 
+  /**
+   * @summary Sets the category to display in Cart component
+   * 
+   * @param {string} newCategory 
+   */
+
   const changeCategory = (newCategory) => {
     setCategory(newCategory);
   }
@@ -79,9 +104,11 @@ const App = () => {
   return (
     <>
       <Switch>
+        {/* cart */}
         <Route path='/cart'
                render={({history}) => <Cart cart={cart} history={history} category={category} shopData={shopData}/>}
         />
+        {/* [pies, coffees, extras, supplies] */}
         <Route exact
                path='/:category'
                render={(routerProps) => {
@@ -89,6 +116,7 @@ const App = () => {
                  return <CategoryPage data={shopData[category]} changeCategory={changeCategory}/>
                }}
         />
+        {/* particular product */}
         <Route path='/:category/:product'
                render={(routerProps) => {
                  const category = routerProps.match.params.category
