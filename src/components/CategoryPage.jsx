@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import SideNav from './SideNav';
 import Rating from './Rating';
 
+import '../styles/CategoryPage.scss';
+
 /**
  * @summary     A selection page for choosing store products.
  * @description Uses data from App to display products from a certain category.
@@ -19,9 +21,9 @@ const CategoryPage = ({data, changeCategory}) => {
   })
 
   return (
-    <>
+    <div className="category-page">
       <SideNav />
-      <div className="select-page">
+      <div className="main">
         Select {data.category}
         {/* display filters if category has them */}
         {data.filters?.map(filter => <div key={filter} id={filter}>{filter}</div>)}
@@ -51,7 +53,7 @@ const CategoryPage = ({data, changeCategory}) => {
           <div>cart</div>
         </Link>
       </div>
-    </>
+    </div>
   )
 }
 
