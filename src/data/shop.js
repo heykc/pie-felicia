@@ -15,8 +15,7 @@ const SHOP = {
     items: [
       {
         name: 'apple pie',
-        image: '',
-        description: 'some description of the product',
+        description: 'The classic apple pie your grandmother used to bake.  Relive the nostalgia.',
         rating: 5,
         sizes: [
           '6"',

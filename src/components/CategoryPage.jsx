@@ -31,16 +31,23 @@ const CategoryPage = ({data, changeCategory}) => {
         {data.items.map((item, i) => {
           return (
             // display a product card for each product
-            <Link key={item.name} to={`/${data.category}/${item.name}`}>
-              <div className="product-card">
-                <div>{item.name}</div>
+            <Link key={item.name} to={`/${data.category}/${item.name}`} className="product-card">
+              <div>
+                <div className="circles">
+                  <span className="before"></span>
+                  <span className="after"></span>
+                </div>
+                <img src={require(`../assets/${item.name}.svg`)} alt={`${item.name} image`}/>
+                <div className="name">{item.name}</div>
                 <Rating rating={item.rating} />
-                <div>{item.description}</div>
-                <div>
+                <div className="desc">{item.description}</div>
+                <div className="prices">
                   {/* display min and max prices OR
                       display flat product price */}
                   {item.sizes.length > 1 ?
-                    <span>{item.prices[0]} - {item.prices[item.prices.length - 1]}</span>
+                    <>
+                      <span>$</span>{item.prices[0]} - <span>$</span>{item.prices[item.prices.length - 1]}
+                    </>
                     :
                     <span>{item.prices[0]}</span>}
                 </div>
