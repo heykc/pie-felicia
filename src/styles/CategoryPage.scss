@@ -15,104 +15,96 @@
 
     padding-top: 25px;
     padding-left: 9px;
-  }
 
-  .product-card {
-    text-decoration: none;
-    color: black;
+    .product-card {
+      text-decoration: none;
+      color: black;
+  
+      & > div {
+        position: relative;
+  
+        margin-top: 75px;
+        margin-left: 40px;
+        width: 225px;
+  
+        background: $white;
+        border-radius: 20px;
+  
+        padding: 140px 15px 15px;
 
-    & > div {
-      position: relative;
-
-      margin-top: 75px;
-      margin-left: 40px;
-      width: 225px;
-
-      background: $white;
-      border-radius: 20px;
-
-      padding: 140px 15px 15px;
-      
-      // overflow: hidden;
-
-      img {
-        position: absolute;
-        top: -50px;
-        left: -30px;
-
-        transform: scale(.9);
-      }
-
-      .name {
-        color: $dark-red;
-        font-size: 1.2rem;
-        font-weight: bold;
-        text-transform: capitalize;
-      }
-
-      .rating, .desc {
-        margin-bottom: 15px;
-      }
-
-      .rating {
-        color: $lite-red;
-      }
-
-      .prices {
-        width: 100%;
-        text-align: right;
-        font-size: 1.5rem;
-        color: $dark-red;
-        font-weight: bold;
-
-        span {
-          font-size: 1rem;
-        }
-      }
-      .circles {
-        position: absolute;
-        top: 0;
-        right: 0;
-
-        width: 100%;
-        height: 200px;
-        // margin-left: -15px;
-
-
-        padding-top: 50px;
-        
-        overflow: hidden;
-
-        .before {
+        box-shadow: 0 4px 4px rgba($black, .25);
+  
+        img {
           position: absolute;
-          top: 55px;
-          right: -60px;
-
-          width: 125px;
-          height: 125px;
-
-          background: $dark-red;
-
-          border-radius: 50%;
+          top: -50px;
+          left: -30px;
         }
-
-        .after {
+  
+        .name {
+          color: $dark-red;
+          font-size: 1.2rem;
+          font-weight: bold;
+          text-transform: capitalize;
+        }
+  
+        .rating, .desc {
+          margin-bottom: 15px;
+        }
+  
+        .rating {
+          color: $lite-red;
+        }
+  
+        .prices {
+          width: 100%;
+          text-align: right;
+          font-size: 1.5rem;
+          color: $dark-red;
+          font-weight: bold;
+  
+          span {
+            font-size: 1rem;
+          }
+        }
+        .circles {
           position: absolute;
-          top: 40px;
-          right: -50px;
-
-          width: 125px;
-          height: 125px;
-
-          background: rgba($cream, .7);
-
-          border-radius: 50%;
+          top: 0;
+          right: 0;
+  
+          width: 100%;
+          height: 200px;
+  
+          padding-top: 50px;
+          
+          overflow: hidden;
+  
+          .before {
+            position: absolute;
+            top: 60px;
+            right: -60px;
+  
+            width: 125px;
+            height: 125px;
+  
+            background: $dark-red;
+  
+            border-radius: 50%;
+          }
+  
+          .after {
+            position: absolute;
+            top: 40px;
+            right: -50px;
+  
+            width: 125px;
+            height: 125px;
+  
+            background: rgba($cream, .7);
+  
+            border-radius: 50%;
+          }
         }
       }
-      
-    }
-    
-   
-    
+    } 
   }
 }

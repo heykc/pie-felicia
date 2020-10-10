@@ -24,7 +24,7 @@ const CategoryPage = ({data, changeCategory}) => {
     <div className="category-page">
       <SideNav />
       <div className="main">
-        Select {data.category}
+        <div className="title">Select {data.category}</div>
         {/* display filters if category has them */}
         {data.filters?.map(filter => <div key={filter} id={filter}>{filter}</div>)}
         {/* look through all items in category */}
@@ -37,7 +37,7 @@ const CategoryPage = ({data, changeCategory}) => {
                   <span className="before"></span>
                   <span className="after"></span>
                 </div>
-                <img src={require(`../assets/${item.name}.svg`)} alt={`${item.name} image`}/>
+                <img src={require(`../assets/${item.name}.svg`) || ''} alt={`${item.name} image`}/>
                 <div className="name">{item.name}</div>
                 <Rating rating={item.rating} />
                 <div className="desc">{item.description}</div>
