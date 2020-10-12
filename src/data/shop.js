@@ -29,6 +29,23 @@ const SHOP = {
           100,
           125
         ] 
+      },
+      {
+        name: 'cherry pie',
+        description: 'Just like an apple pie but with cherries. Try this flavor twist for yourself.',
+        rating: 5,
+        sizes: [
+          '6"',
+          '8"',
+          '10"',
+          '12"'
+        ],
+        prices: [
+          50,
+          75,
+          100,
+          125
+        ] 
       }
     ] 
   },
