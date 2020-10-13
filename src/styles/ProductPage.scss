@@ -9,6 +9,8 @@
 
   background: $cream;
 
+  overflow-x: hidden;
+
   .background {
     position: absolute;
     z-index: -1;
@@ -68,6 +70,7 @@
       .rating {
         .material-icons-round {
           font-size: 2rem;
+          color: $lite-red;
         }
       }
       
@@ -126,6 +129,10 @@
           margin-bottom: 15px;
 
           box-shadow: 0 4px 4px rgba($black, .25);
+
+          &.active {
+            border: 5px solid white;
+          }
         }
 
         .price {

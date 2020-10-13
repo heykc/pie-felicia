@@ -36,6 +36,8 @@ const ProductPage = (props) => {
   const [order, setOrder] = useState(prevOrder);
   // state for size selection
   const [size, setSize] = useState('');
+  // state for selected size
+  const [selected, setSelected] = useState(-1);
 
   const changeCart = () => {
     // must be a selected size an amount > 0
@@ -47,12 +49,17 @@ const ProductPage = (props) => {
     }
   }
 
+  const setUserSelection = (uSize, ndx) => {
+    setSize(uSize);
+    setSelected(ndx);
+  }
+
   return (
     <div className="product-page">
       <div className="background"></div>
       <TopNav history={props.history}/>
       <div className="atc">
-        <img src={require(`../assets/${props.data.name}.svg`)} />
+        <img src={require(`../assets/${props.data.name}.svg`)} alt={props.data.name}/>
         <button onClick={changeCart}>Add to Cart</button>
       </div>
       
@@ -106,8 +113,8 @@ const ProductPage = (props) => {
           {props.data.sizes.map((size, i) => (
             // display all available sizes
             // clicking sets the size
-            <div key={i} className="size-selector" onClick={() => setSize(size)}>
-              <span className="size">{size}</span>
+            <div key={i} className="size-selector" onClick={() => setUserSelection(size, i)}>
+              <span className={`size ${i === selected ? 'active' : ''}`}>{size}</span>
               <span className="price"><span className="dollar">$</span>{props.data.prices[i]}</span>
             </div>
           ))}
