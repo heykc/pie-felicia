@@ -75,8 +75,8 @@ const ProductPage = (props) => {
           />
 
           {/* add/remove items */}
-          <div className="item-counter">
-            <span className="material-icons-round" 
+          <div className={`item-counter ${size ? 'active' : ''}`}>
+            <span className={`material-icons-round ${size ? 'active' : ''}`} 
                   onClick={() => {
                     // must have a size to set the order amount
                     size &&
@@ -90,7 +90,7 @@ const ProductPage = (props) => {
             {/* reflect the amount for the current order 
                 initial render has no size selected, so a 0 is displayed*/}
             <span>{order[size] || 0}</span>
-            <span className="material-icons-round" 
+            <span className={`material-icons-round ${size ? 'active' : ''}`}
                   onClick={() => {
                     // must have a size to set the order amount
                     size &&

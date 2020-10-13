@@ -90,6 +90,17 @@
         border-radius: 50px;
 
         background: linear-gradient(to right, #797979, #d9d9d9);
+
+        &.active {
+          background: $dark-red;
+          color: $white;
+        }
+
+        .material-icons-round {
+          &.active {
+            color: white;
+          }
+        }
       }
     }
 
