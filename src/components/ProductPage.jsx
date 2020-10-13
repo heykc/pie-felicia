@@ -46,6 +46,7 @@ const ProductPage = (props) => {
       props.changeCart(order, props.productName, props.category)
       // clear the size selection
       setSize('');
+      setSelected(-1);
     }
   }
 
