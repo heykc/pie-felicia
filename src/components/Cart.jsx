@@ -52,7 +52,7 @@ const Cart = ({cart, history, category, shopData}) => {
     <div className="cart-page">
       <div className="back" onClick={() => history.goBack()}>
         <span className="material-icons-round">keyboard_arrow_left</span>
-        Back to {category}
+        <span>Back to <span className="cat">{category}</span></span>
       </div>
       <div className="remember">Did you remember your <Link to='/supplies'>Supplies</Link> and <Link to='/extras'>Extras</Link>?</div>
       <div className="receipt">

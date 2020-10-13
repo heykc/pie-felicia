@@ -61,7 +61,25 @@ const SHOP = {
       {
         name: 'caffe americano',
         image: '',
-        description: 'some description of the product',
+        description: 'Your typical watered-down espresso. Espresso first, then water.',
+        rating: 3,
+        sizes: [
+          '1lb',
+          '5lbs',
+          '7lbs',
+          '10lbs'
+        ],
+        prices: [
+          50,
+          75,
+          100,
+          125
+        ] 
+      },
+      {
+        name: 'long black',
+        image: '',
+        description: 'You typical watered-down espresso. Water first, then espresso',
         rating: 3,
         sizes: [
           '1lb',
