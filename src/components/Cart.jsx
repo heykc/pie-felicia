@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
+import '../styles/Cart.scss';
+
+
 /**
  * @summary Prints the order
  * 
@@ -46,34 +49,57 @@ const Cart = ({cart, history, category, shopData}) => {
 
   let details = cartComb(cart);
   return (
-    <div className="cart">
-      <div>CART</div>
-      <button onClick={() => history.goBack()}>Back to {category}</button>
-      <div>Did you remember your <Link to='/supplies'>Supplies</Link> and <Link to='/extras'>Extras</Link>?</div>
-      {/* look through the details */}
-      {details.map((x, i) => {
-        return (
-          <Fragment key={i}>
-            <div>{x.name} ........ {x.itemCount}</div>
-            <>
-              {/* for every possible order */}
-              {Object.keys(x.order).map((y, j) => {
-                // check if the amount is > 0
-                if (x.order[y] > 0)
-                  return (
-                    // display the size and amount
-                    <div key={j}>
-                      {y} ........ {x.order[y]}
-                    </div>
-                  )
-              })}
-            </>
-            <div>{x.totalCost}</div>
-          </Fragment>
-        )
-      })}
+    <div className="cart-page">
+      <div className="back" onClick={() => history.goBack()}>
+        <span className="material-icons-round">keyboard_arrow_left</span>
+        Back to {category}
+      </div>
+      <div className="remember">Did you remember your <Link to='/supplies'>Supplies</Link> and <Link to='/extras'>Extras</Link>?</div>
+      <div className="receipt">
+        <div className="receipt-info">
+          {/* look through the details */}
+          {details.map((x, i) => {
+            return (
+              <Fragment key={i}>
+                <div className="item-name-row">
+                  <span className="item-name">{x.name}</span>
+                  <span className="item-quantity">x{x.itemCount}</span>
+                </div>
+                <>
+                  {/* for every possible order */}
+                  {Object.keys(x.order).map((y, j) => {
+                    // check if the amount is > 0
+                    if (x.order[y] > 0)
+                      return (
+                        // display the size and amount
+                        <div key={j} className="item-order-row">
+                          <span>{y}</span>
+                          <span className="item-order-quantity">x{x.order[y]}</span>
+                        </div>
+                      )
+                  })}
+                </>
+                <div className="subtotal">
+                  <span className="subtotal-title">Subtotal</span>
+                  <span className="subtotal-price">+${x.totalCost}</span>
+                </div>
+              </Fragment>
+            )
+          })}
+        </div>
+       
 
-      <div>{orderTotal}</div>
+        <div className="cart-total">
+          <span>
+            <span className="dollar">$</span>
+            {orderTotal}
+          </span>
+          <div className="material-icons-outlined icon">shopping_cart</div>
+        </div>
+      </div>
+      
+
+      
     </div>
   )
 }

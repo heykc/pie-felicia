@@ -1,0 +1,132 @@
+@import './colors.scss';
+
+
+.cart-page {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background: $cream;
+
+  padding-bottom: 60px;
+
+  // border: 1px solid blue;
+
+  .back {
+    display: flex;
+    align-items: center;
+
+    padding: 25px 0 25px 10px;
+
+    .material-icons-round {
+      font-size: 2rem;
+    }
+  }
+
+  .remember {
+    width: 75%;
+    font-weight: 700;
+    padding: 0 25px;
+    font-size: 1.3rem;
+    margin-bottom: 50px;
+
+    a {
+      color: $dark-red;
+      text-decoration: none;
+    }
+  }
+
+  .receipt {
+    position: relative;
+
+    background: $white;
+    margin: 0 25px;
+    border-radius: 20px;
+    padding: 15px;
+
+    flex: 2;
+
+    .receipt-info {
+      overflow-y: scroll;
+    }
+    
+    .item-name-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      font-size: 1.5rem;
+      font-weight: 700;
+
+      margin-bottom: 5px;
+
+      .item-name {
+        color: $dark-red;
+        text-transform: capitalize;
+      }
+
+      &:not(:first-child) {
+        margin-top: 15px;
+      }
+    }
+
+    .item-order-row {
+      margin-left: 15px;
+      margin-bottom: 5px;
+      font-weight: bold;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .item-order-quantity {
+        font-size: .8rem;
+      }
+    }
+
+    .subtotal {
+      margin-left: 15px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+
+      &-price {
+        color: $dark-red;
+      }
+    }
+
+    .cart-total {
+      position: absolute;
+      left: 0;
+      bottom: -36px;
+
+      width: 100%;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 10px 10px 10px 20px;
+      border-radius: 50px;
+      
+      color: $white;
+      font-weight: 700;
+      font-size: 2rem;
+      background: linear-gradient(to right, $dark-red, $lite-red);
+
+      .dollar {
+        font-size: 1.3rem;
+      }
+
+      .icon {
+        font-size: 2rem;
+        background: $white;
+        color: $dark-red;
+        padding: 10px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
