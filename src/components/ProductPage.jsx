@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import TopNav from './TopNav';
 import Rating from './Rating';
 
+import '../styles/ProductPage.scss';
+
 /**
  * @summary Creates an object from the sizes array and fills values with 0s
  * 
@@ -47,51 +49,72 @@ const ProductPage = (props) => {
 
   return (
     <div className="product-page">
+      <div className="background"></div>
       <TopNav history={props.history}/>
-      <button onClick={changeCart}>Add to Cart</button>
-      {/* product name */}
-      {props.data.name}
-      <Rating rating={props.data.rating} 
-              changeRating={props.changeRating}
-              category={props.category}
-              product={props.productName} 
-      />
-      {/* add/remove items */}
-      <div className="item-counter">
-        <span className="material-icons-round" 
-              onClick={() => {
-                // must have a size to set the order amount
-                size &&
-                setOrder({
-                  ...order,
-                  [size]: order[size] - 1
-                });
-              }}>
-          remove_circle
-        </span>
-        {/* reflect the amount for the current order 
-            initial render has no size selected, so a 0 is displayed*/}
-        <span>{order[size] || 0}</span>
-        <span className="material-icons-round" 
-              onClick={() => {
-                // must have a size to set the order amount
-                size &&
-                setOrder({
-                  ...order,
-                  [size]: order[size] + 1
-                });
-              }}>
-          add_circle
-        </span>
+      <div className="atc">
+        <img src={require(`../assets/${props.data.name}.svg`)} />
+        <button onClick={changeCart}>Add to Cart</button>
       </div>
-      {props.data.description}
-      {props.data.sizes.map((size, i) => (
-        // display all available sizes
-        // clicking sets the size
-        <div key={i} onClick={() => setSize(size)}>
-          {size}{props.data.prices[i]}
+      
+      {/* product name */}
+      <div className="product-details">
+        <div className="name">{props.data.name}</div>
+        <div className="rating-counter">
+          <Rating rating={props.data.rating} 
+                  changeRating={props.changeRating}
+                  category={props.category}
+                  product={props.productName} 
+          />
+
+          {/* add/remove items */}
+          <div className="item-counter">
+            <span className="material-icons-round" 
+                  onClick={() => {
+                    // must have a size to set the order amount
+                    size &&
+                    setOrder({
+                      ...order,
+                      [size]: order[size] - 1
+                    });
+                  }}>
+              remove_circle
+            </span>
+            {/* reflect the amount for the current order 
+                initial render has no size selected, so a 0 is displayed*/}
+            <span>{order[size] || 0}</span>
+            <span className="material-icons-round" 
+                  onClick={() => {
+                    // must have a size to set the order amount
+                    size &&
+                    setOrder({
+                      ...order,
+                      [size]: order[size] + 1
+                    });
+                  }}>
+              add_circle
+            </span>
+          </div>
         </div>
-      ))}
+      
+      
+        <div className="desc">{props.data.description}</div>
+      </div>
+      
+      <div className="size-selection">
+        <div className="title">Size</div>
+        <div className="sizes">
+          {props.data.sizes.map((size, i) => (
+            // display all available sizes
+            // clicking sets the size
+            <div key={i} className="size-selector" onClick={() => setSize(size)}>
+              <span className="size">{size}</span>
+              <span className="price"><span className="dollar">$</span>{props.data.prices[i]}</span>
+            </div>
+          ))}
+        </div>
+        
+      </div>
+      
     </div>
   )
 }

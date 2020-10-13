@@ -1,0 +1,13 @@
+@import './colors.scss';
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 25px 9px;
+
+  & > div {
+    font-size: 2rem;
+    color: $cream;
+  }
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import '../styles/TopNav.scss';
 
 /**
  * @summary     A top navigation for the ProductPage component
