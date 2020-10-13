@@ -102,7 +102,7 @@ const SHOP = {
       {
         name: 'whipped cream',
         image: '',
-        description: 'some description of the product',
+        description: 'Just like the names says: cream that is whipped. Comes in a standard 12ox can.',
         rating: 4,
         sizes: [
           '12oz'
@@ -119,7 +119,7 @@ const SHOP = {
       {
         name: 'plates',
         image: '',
-        description: 'some description of the product',
+        description: 'A plate for every person, plus a few extras. Price varies for party size.',
         rating: 1,
         sizes: [
           'single'
