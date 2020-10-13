@@ -60,7 +60,7 @@ const ProductPage = (props) => {
       <TopNav history={props.history}/>
       <div className="atc">
         <img src={require(`../assets/${props.data.name}.svg`)} alt={props.data.name}/>
-        <button onClick={changeCart}>Add to Cart</button>
+        <button onClick={changeCart} className={order[size] > 0 ? 'active': ''}>Add to Cart</button>
       </div>
       
       {/* product name */}
