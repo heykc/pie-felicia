@@ -22,7 +22,7 @@ const CategoryPage = ({data, changeCategory}) => {
 
   return (
     <div className="category-page">
-      <SideNav />
+      <SideNav category={data.category}/>
       <div className="main">
         <div className="title">Select {data.category}</div>
         {/* display filters if category has them */}

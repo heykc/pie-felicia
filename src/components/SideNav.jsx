@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 
 import '../styles/SideNav.scss';
@@ -9,7 +9,7 @@ import '../styles/SideNav.scss';
  *              (main menu, search, pies, coffees, extras, supplies).
  */
 
-const SideNav = () => {
+const SideNav = ({category}) => {
   return (
     <div className="side-nav">
       <div className="nav-icons">
@@ -18,10 +18,10 @@ const SideNav = () => {
       </div>
       
       <div className="categories">
-        <Link to='/pies' className="active">pies</Link>
-        <Link to='/coffees'>coffees</Link>
-        <Link to='/extras'>extras</Link>
-        <Link to='/supplies'>supplies</Link>
+        <Link to='/pies' className={category === 'pies' ? 'active' : ''}>pies</Link>
+        <Link to='/coffees' className={category === 'coffees' ? 'active' : ''}>coffees</Link>
+        <Link to='/extras' className={category === 'extras' ? 'active' : ''}>extras</Link>
+        <Link to='/supplies' className={category === 'supplies' ? 'active' : ''}>supplies</Link>
       </div>
     </div>
   )

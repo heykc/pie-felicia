@@ -114,7 +114,7 @@ const App = () => {
                path='/:category'
                render={(routerProps) => {
                  const category = routerProps.match.params.category
-                 return <CategoryPage data={shopData[category]} changeCategory={changeCategory}/>
+                 return <CategoryPage data={shopData[category]} changeCategory={changeCategory} />
                }}
         />
         {/* particular product */}
