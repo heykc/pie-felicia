@@ -105,6 +105,11 @@ const App = () => {
   return (
     <>
       <Switch>
+        {/* Default home route leads to 'pies'; change after splash and login page */}
+      <Route exact
+             path={['/','/pie-felicia']}
+             render={() => <CategoryPage data={shopData.pies} changeCategory={changeCategory} />}
+        />
         {/* cart */}
         <Route path='/cart'
                render={({history}) => <Cart cart={cart} history={history} category={category} shopData={shopData}/>}
